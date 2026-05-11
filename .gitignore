@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+*.egg-info/
+
+# Experiment artifacts
+checkpoints/
+outputs/
+runs/
+wandb/
+tensorboard/
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Local files
+.DS_Store
+*.log
