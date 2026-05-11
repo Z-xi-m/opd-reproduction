@@ -28,7 +28,7 @@ to reproduce the full paper table; it only verifies the OPD training loop:
 - checkpoint and validation-log writing.
 
 The run uses the repository's included DAPO-Math parquet and AIME24 validation
-set. Model checkpoints are downloaded to `/data/zhu.ximo/opd_repro/models`.
+set. Model checkpoints are stored persistently under `/data/zhu.ximo/model`.
 
 ```bash
 cd /data/zhu.ximo/opd_repro/thunlp_opd
@@ -40,12 +40,14 @@ Key smoke-test overrides:
 
 | Setting | Value |
 | --- | --- |
-| GPUs | `CUDA_VISIBLE_DEVICES=1,2,3` by default; script derives GPU count automatically |
+| GPUs | `CUDA_VISIBLE_DEVICES=0,1,2,3` by default; override it after checking `nvidia-smi` if the node is shared |
 | Training steps | 5 |
 | Train data | `datasets/dapo-math-17k.parquet` |
 | Validation data | `datasets/test_data/AIME24/test.parquet` |
 | Student | `lllyx/Qwen3-1.7B-SFT` |
 | Teacher | `lllyx/Qwen3-4B-Base-GRPO` |
+| Student path | `/data/zhu.ximo/model/Qwen3-1.7B-SFT` |
+| Teacher path | `/data/zhu.ximo/model/Qwen3-4B-Base-GRPO` |
 | OPD estimator | `token_reward_direct` |
 | Top-k | `16` |
 | Top-k strategy | `only_stu` |
