@@ -18,7 +18,7 @@ hardware and dependency setup needed for a reliable run.
 
 ## First Run Plan
 
-Use `A100_4` for a smoke reproduction on 4 x A100 80GB. This is not intended
+Use `A100_4` for a smoke reproduction on the currently free A100 80GB GPUs. This is not intended
 to reproduce the full paper table; it only verifies the OPD training loop:
 
 - student on-policy rollout,
@@ -40,7 +40,7 @@ Key smoke-test overrides:
 
 | Setting | Value |
 | --- | --- |
-| GPUs | 4 |
+| GPUs | `CUDA_VISIBLE_DEVICES=1,2,3` by default; script derives GPU count automatically |
 | Training steps | 5 |
 | Train data | `datasets/dapo-math-17k.parquet` |
 | Validation data | `datasets/test_data/AIME24/test.parquet` |
